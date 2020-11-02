@@ -1,1 +1,135 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/theming";
+
+$custom-typography: mat-typography-config(
+  $font-family: "Roboto, sans-serif",
+  $headline: mat-typography-level(32px, 48px, 700),
+  $body-1: mat-typography-level(16px, 24px, 500),
+);
+
+@include mat-core($custom-typography);
+
+$custom-primary: (
+  50: #fef0b3,
+  100: #feeb9a,
+  200: #fee781,
+  300: #fde268,
+  400: #fddd4e,
+  500: #fdd835,
+  600: #fdd31c,
+  700: #fcce03,
+  800: #e3ba02,
+  900: #caa502,
+  A100: #fef5cc,
+  A200: #fffae6,
+  A400: #ffffff,
+  A700: #b19002,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  )
+);
+
+$custom-accent: (
+  50: #00358f,
+  100: #003fa8,
+  200: #0049c2,
+  300: #0052db,
+  400: #005cf5,
+  500: #0f69ff,
+  600: #4289ff,
+  700: #5c99ff,
+  800: #75a9ff,
+  900: #8fb9ff,
+  A100: #4289ff,
+  A200: #2979ff,
+  A400: #0f69ff,
+  A700: #a8c9ff,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  )
+);
+
+$custom-warn: (
+  50: #f264a4,
+  100: #f04c96,
+  200: #ee3588,
+  300: #ec1d7a,
+  400: #dc136e,
+  500: #c51162,
+  600: #ae0f56,
+  700: #960d4b,
+  800: #7f0b3f,
+  900: #670933,
+  A100: #f47bb1,
+  A200: #f693bf,
+  A400: #f8aacd,
+  A700: #500728,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  )
+);
+
+@function my-mat-light-theme-foreground($color) {
+  @return (
+      base:              $color,
+      divider:           $black-12-opacity,
+      dividers:          $black-12-opacity,
+      disabled:          rgba($color, 0.38),
+      disabled-button:   rgba($color, 0.38),
+      disabled-text:     rgba($color, 0.38),
+      hint-text:         rgba($color, 0.38),
+      secondary-text:    rgba($color, 0.54),
+      icon:              rgba($color, 0.54),
+      icons:             rgba($color, 0.54),
+      text:              rgba($color, 0.87),
+      slider-off:        rgba($color, 0.26),
+      slider-off-active: rgba($color, 0.38),
+      slider-min:        rgba($color, 0.38)
+  );
+};
+
+$custom-app-primary: mat-palette($mat-yellow);
+$custom-app-accent:  mat-palette($custom-accent);
+$custom-app-warn:    mat-palette($custom-warn);
+$custom-app-theme: mat-light-theme($custom-app-primary, $custom-app-accent, $custom-app-warn);
+
+@include angular-material-theme($custom-app-theme);

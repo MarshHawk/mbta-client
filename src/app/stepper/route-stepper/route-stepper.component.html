@@ -1,0 +1,61 @@
+<mat-vertical-stepper #stepper [linear]="true">
+  <mat-step [stepControl]="routesFormGroup.controls.route">
+    <form [formGroup]="routesFormGroup">
+      <ng-template matStepLabel>Select a Route</ng-template>
+      <mat-form-field>
+        <mat-label>Routes</mat-label>
+        <mat-select formControlName="route">
+          <mat-option *ngFor="let r of (routes$ | async)" [value]="r">{{ r.id }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button mat-icon-button matStepperPrevious>
+          <mat-icon>arrow_back</mat-icon>
+          <mat-label>Go Back</mat-label>
+        </button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="stopsFormGroup">
+    <form [formGroup]="stopsFormGroup">
+      <ng-template matStepLabel>Select a Stop</ng-template>
+      <mat-form-field>
+        <mat-label>Stops</mat-label>
+        <mat-select formControlName="stop">
+          <mat-option *ngFor="let stop of (stops$ | async)" [value]="stop.id">{{ stop.id }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button mat-icon-button matStepperPrevious>
+          <mat-icon>arrow_back</mat-icon>
+          <mat-label>Go Back</mat-label>
+        </button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="directionsFormGroup">
+    <form [formGroup]="directionsFormGroup">
+      <ng-template matStepLabel>Select a Direction</ng-template>
+      <mat-form-field>
+        <mat-label>Directions</mat-label>
+        <mat-select formControlName="direction">
+          <mat-option *ngFor="let direction of state.selectedRoute.directionNames; let i=index;" [value]="i">{{ direction }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div>
+        <button mat-icon-button matStepperPrevious>
+          <mat-icon>arrow_back</mat-icon>
+          <mat-label>Go Back</mat-label>
+        </button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Departure Time</ng-template>
+    <p>{{this.state.departureMessage}}</p>
+    <button mat-icon-button matStepperPrevious>
+      <mat-icon>arrow_back</mat-icon>
+      <mat-label>Go Back</mat-label>
+    </button>
+  </mat-step>
+</mat-vertical-stepper>
